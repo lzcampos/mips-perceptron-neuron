@@ -10,7 +10,7 @@
 - f(saida) = 1, se saida >= limiar
          0, se não.
 
-- Taxa de aprendizado empregada = 0,1
+- Taxa de aprendizado empregada = 0.001
 
 
 ## Estratégia de Treinamento
