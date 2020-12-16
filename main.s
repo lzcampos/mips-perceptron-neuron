@@ -33,15 +33,15 @@ lwc1 $f24, 16($t7)
 # Declarando variavel 'index'
 addi $t0, $zero, 1
 
-# Declarando limite de iteracoes para cem
-addi $t1, $zero, 100
+# Declarando limite de iteracoes para trinta
+addi $t1, $zero, 30
 
 TREINAMENTO:
 
 # Comparando $t0 (index) a $t1 (maximo de iteracoes)
 slt $t2, $t0, $t1
 
-# Se $t2 = 0 (i >= 10), JUMP TESTENOVOVALOR
+# Se $t2 = 0 (i >= 30), JUMP TESTENOVOVALOR
 beq $t2, $zero TESTENOVOVALOR
 
 # armazenando x * w1 no registrador $f10
@@ -50,22 +50,22 @@ mul.s $f10, $f6, $f8
 # armazenando x * w2 no registrador $f12
 mul.s $f12, $f4, $f8
 
-# armazenando $f10 + $f12 (result) no registrador $f12
+# armazenando $f10 + $f12 (result) no registrador $f14
 add.s $f14, $f10, $f12
 
-# armazenando $f1 - $f12 (erro) no registrador $f14
+# armazenando $f1 - $f12 (erro) no registrador $f16
 sub.s $f16, $f2, $f14
 
-# armazenando erro * taxa de aprendizado no registrador $f14
+# armazenando erro * taxa de aprendizado no registrador $f18
 mul.s $f18, $f16,  $f24
 
-# armazenando $f14 (erro * taxa de aprendizado) * a (entrada) em $f16
+# armazenando $f18 (erro * taxa de aprendizado) * a (entrada) em $f20
 mul.s $f20, $f18, $f2
 
-# armazenando $f16 + $f2 em $f2 (w1 = w1 + (erro * taxaAprendizado * a))
+# armazenando $f20 + $f6 em $f6 (w1 = w1 + (erro * taxaAprendizado * a))
 add.s $f6, $f6, $f20
 
-# armazenando $f16 + $f4 em $f4 (w2 = w2 + (erro * taxaAprendizado * a))
+# armazenando $f20 + $f4 em $f4 (w2 = w2 + (erro * taxaAprendizado * a))
 add.s $f4, $f4, $f20
 
 # incrementando valor de x
@@ -83,19 +83,19 @@ j TREINAMENTO
 
 TESTENOVOVALOR:
 
-# Adicionando um novo valor a ser testado no registrador $f16
+# Adicionando um novo valor a ser testado no registrador $f18
 lwc1 $f18, 20($t7)
 
-# armazenando x * w1 no registrador $f10
+# armazenando x * w1 no registrador $f12
 mul.s $f12, $f6, $f18
 
-# armazenando x * w2 no registrador $f12
+# armazenando x * w2 no registrador $f10
 mul.s $f10, $f4, $f18
 
-# armazenando $f10 + $f12 (result) no registrador $f12
+# armazenando $f10 + $f12 (result) no registrador $f16
 add.s $f16, $f10, $f12
 
-# armazenando $f1 - ($f16 * 2) (erro) no registrador $f14
+# armazenando $f28 * 2 (dobro do valor testado) - $f16  (erro) no registrador $f14
 lwc1 $f28, 4($t7)
 mul.s $f28, $f28, $f18
 sub.s $f14, $f28, $f16
