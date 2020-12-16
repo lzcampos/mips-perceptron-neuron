@@ -1,6 +1,16 @@
 # mips-perceptron-neuron
 
-## Modelo do perceptron
+## Sobre o projeto
+
+* Esse projeto se trata de um perceptron, e, a partir da comparação do resultado soma da multiplicação dos pesos do neurônio pela saída esperada, esses pesos são atualizados.
+* Esse perceptron, especificamente, aprende a como dobrar o valor de uma entrada.
+* Há, na pasta implementacaoJS, um exemplo de um código praticamente idêntico ao código assembly presente no arquivo main.s, porém feito em JavaScript.
+
+## Como utilizar
+
+* Para executar o programa, abra o arquivo main.s (que se localiza na raiz do repositório) no programa QtSpim.
+
+### Modelo do perceptron
 
 - saida = x1*w1 + x2*w2
 - x1 e x2 são as entradas (estáticas)
@@ -8,7 +18,7 @@
 - Taxa de aprendizado empregada = 0.001
 
 
-## Estratégia de Treinamento
+### Estratégia de Treinamento
 
 - Iniciar os pesos com valores aleatórios
 - Para cada conjunto de dados, calcular o erro na saída no neurônio (erro = saída desejada - saída do neurônio)
