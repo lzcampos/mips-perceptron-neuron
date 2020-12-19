@@ -22,5 +22,5 @@
 
 - Iniciar os pesos com valores aleatórios
 - Para cada conjunto de dados, calcular o erro na saída no neurônio (erro = saída desejada - saída do neurônio)
-- Atualizar o valor de cassa peso com a equação:
+- Atualizar o valor de cada peso com a equação:
     * Wx = Wx + Erro * TaxaAprendizado * Entrada
